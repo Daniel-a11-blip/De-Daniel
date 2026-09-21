@@ -5,9 +5,7 @@
 <title>Un pequeño detalle 🌻</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
   margin:0;
@@ -29,7 +27,7 @@ body{
   font-family:"DM Sans",sans-serif;
 }
 
-/* DECORACIÓN DEL FONDO */
+/* DECORACIÓN */
 .background-flower{
   position:fixed;
   pointer-events:none;
@@ -38,19 +36,15 @@ body{
   animation:floatFlower 7s ease-in-out infinite;
 }
 
-.bf1{left:5%;top:13%;animation-delay:0s}
+.bf1{left:5%;top:13%}
 .bf2{right:7%;top:20%;font-size:22px;animation-delay:1.2s}
 .bf3{left:9%;bottom:18%;font-size:20px;animation-delay:2s}
 .bf4{right:9%;bottom:12%;font-size:30px;animation-delay:3s}
 .bf5{left:50%;top:5%;font-size:18px;animation-delay:1.5s}
 
 @keyframes floatFlower{
-  0%,100%{
-    transform:translateY(0) rotate(-5deg);
-  }
-  50%{
-    transform:translateY(-14px) rotate(8deg);
-  }
+  0%,100%{transform:translateY(0) rotate(-5deg)}
+  50%{transform:translateY(-14px) rotate(8deg)}
 }
 
 /* TARJETA */
@@ -96,14 +90,13 @@ button{
 
 button:hover{
   transform:translateY(-2px);
-  box-shadow:0 11px 25px rgba(196,154,25,.27);
 }
 
 button:active{
   transform:scale(.96);
 }
 
-/* CONTENIDO REVELADO */
+/* CONTENIDO */
 .reveal{
   display:none;
 }
@@ -131,7 +124,6 @@ button:active{
   font-size:31px;
   font-weight:600;
   color:#4c3b1d;
-  animation:nameAppear 1s ease .15s both;
 }
 
 .name-line{
@@ -140,37 +132,14 @@ button:active{
   margin:0 auto 10px;
   background:#e2bd3d;
   border-radius:10px;
-  animation:nameLine 1s ease .35s both;
 }
 
-@keyframes nameAppear{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes nameLine{
-  from{
-    width:0;
-    opacity:0;
-  }
-  to{
-    width:42px;
-    opacity:1;
-  }
-}
-
-/* GIRASOL PRINCIPAL */
+/* GIRASOL */
 .sunflower{
   position:relative;
   width:210px;
   height:270px;
-  margin:0 auto 0;
+  margin:0 auto;
 }
 
 .flower{
@@ -290,7 +259,7 @@ button:active{
   color:#4b3b20;
 }
 
-/* FLORES QUE APARECEN AL ABRIR */
+/* FLORES */
 .fall{
   position:fixed;
   top:-35px;
@@ -298,7 +267,6 @@ button:active{
   pointer-events:none;
   animation:fall linear forwards;
   opacity:0;
-  filter:drop-shadow(0 3px 5px rgba(180,135,20,.12));
 }
 
 @keyframes fall{
@@ -306,19 +274,15 @@ button:active{
     transform:translateY(-40px) rotate(0deg);
     opacity:0;
   }
-  10%{
-    opacity:.8;
-  }
-  90%{
-    opacity:.65;
-  }
+  10%{opacity:.8}
+  90%{opacity:.65}
   100%{
     transform:translateY(110vh) rotate(420deg);
     opacity:0;
   }
 }
 
-/* PEQUEÑOS DESTELLOS */
+/* DESTELLOS */
 .spark{
   position:fixed;
   width:5px;
@@ -344,19 +308,20 @@ button:active{
     opacity:0;
   }
 }
-</style></head><body><!-- Decoración inicial --><div class="background-flower bf1">🌻</div>
+</style></head><body><div class="background-flower bf1">🌻</div>
 <div class="background-flower bf2">🌼</div>
 <div class="background-flower bf3">🌻</div>
 <div class="background-flower bf4">🌼</div>
-<div class="background-flower bf5">✦</div><main class="card">  <section class="intro" id="intro">
+<div class="background-flower bf5">✦</div><!-- MÚSICA --><audio id="musica" loop preload="auto">
+  <source src="flores-amarillas.mp3" type="audio/mpeg">
+</audio><main class="card">  <section class="intro" id="intro">
     <h1>Un pequeño detalle 🌻</h1>
     <p>Hay algo que quiero entregarte.</p>
     <button id="openBtn">Abrir 🌻</button>
   </section>  <section class="reveal" id="reveal"><h2 class="name">Sarita</h2>
 <div class="name-line"></div>
 
-<!-- GIRASOL PRINCIPAL -->
-<div class="sunflower" aria-label="Girasol">
+<div class="sunflower">
 
   <div class="flower">
     <span class="petal"></span>
@@ -371,7 +336,6 @@ button:active{
     <span class="petal"></span>
     <span class="petal"></span>
     <span class="petal"></span>
-
     <div class="center"></div>
   </div>
 
@@ -417,13 +381,9 @@ button:active{
     para que funcione como amistad.
   </p>
 
-  <p>
-    Gracias.
-  </p>
+  <p>Gracias.</p>
 
-  <p class="final">
-    Bendiciones 🌻
-  </p>
+  <p class="final">Bendiciones 🌻</p>
 
 </div>
 
@@ -433,9 +393,17 @@ button:active{
 const btn = document.getElementById("openBtn");
 const intro = document.getElementById("intro");
 const reveal = document.getElementById("reveal");
+const musica = document.getElementById("musica");
 
 btn.addEventListener("click", () => {
 
+  /* REPRODUCIR MÚSICA */
+  musica.currentTime = 0;
+  musica.play().catch(() => {
+    console.log("El navegador bloqueó la reproducción.");
+  });
+
+  /* MOSTRAR CONTENIDO */
   intro.style.display = "none";
   reveal.classList.add("show");
 
@@ -449,31 +417,23 @@ btn.addEventListener("click", () => {
     "🌻","🌻","🌼","🌻","🌻"
   ];
 
-  flowers.forEach((flower, i) => {
+  flowers.forEach((flower) => {
 
     const f = document.createElement("span");
 
     f.className = "fall";
     f.textContent = flower;
-
     f.style.left = Math.random() * 100 + "vw";
     f.style.fontSize = (15 + Math.random() * 17) + "px";
-
-    f.style.animationDuration =
-      (4 + Math.random() * 4) + "s";
-
-    f.style.animationDelay =
-      (Math.random() * 2.5) + "s";
+    f.style.animationDuration = (4 + Math.random() * 4) + "s";
+    f.style.animationDelay = (Math.random() * 2.5) + "s";
 
     document.body.appendChild(f);
 
-    setTimeout(() => {
-      f.remove();
-    }, 8500);
-
+    setTimeout(() => f.remove(), 8500);
   });
 
-  /* DESTELLOS ALREDEDOR */
+  /* DESTELLOS */
   for(let i = 0; i < 24; i++){
 
     setTimeout(() => {
@@ -481,21 +441,14 @@ btn.addEventListener("click", () => {
       const s = document.createElement("span");
 
       s.className = "spark";
-
-      s.style.left =
-        (8 + Math.random() * 84) + "vw";
-
-      s.style.top =
-        (8 + Math.random() * 84) + "vh";
+      s.style.left = (8 + Math.random() * 84) + "vw";
+      s.style.top = (8 + Math.random() * 84) + "vh";
 
       document.body.appendChild(s);
 
-      setTimeout(() => {
-        s.remove();
-      }, 1900);
+      setTimeout(() => s.remove(), 1900);
 
     }, i * 90);
-
   }
 
 });
