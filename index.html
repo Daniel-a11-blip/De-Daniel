@@ -1,11 +1,18 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un pequeño detalle 🌻</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Un pequeño detalle 🌻</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><style>
-*{box-sizing:border-box}
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+}
 
 html,body{
   margin:0;
@@ -14,132 +21,313 @@ html,body{
 
 body{
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:22px;
   overflow-x:hidden;
   background:
-    radial-gradient(circle at 20% 10%,rgba(255,218,79,.18),transparent 28%),
-    radial-gradient(circle at 80% 90%,rgba(255,205,50,.14),transparent 30%),
-    linear-gradient(145deg,#fffdf5,#fff8d9 55%,#fffdf6);
-  color:#332b20;
+    radial-gradient(circle at 50% 20%,#fffdf5 0%,#f9f3df 45%,#eee4c7 100%);
+  color:#443b2d;
   font-family:"DM Sans",sans-serif;
 }
 
-/* DECORACIÓN */
-.background-flower{
+/* ---------------- PANTALLA INICIAL ---------------- */
+
+.intro{
   position:fixed;
+  inset:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+.intro.hide{
+  opacity:0;
+  visibility:hidden;
   pointer-events:none;
-  opacity:.14;
-  font-size:28px;
-  animation:floatFlower 7s ease-in-out infinite;
 }
 
-.bf1{left:5%;top:13%}
-.bf2{right:7%;top:20%;font-size:22px;animation-delay:1.2s}
-.bf3{left:9%;bottom:18%;font-size:20px;animation-delay:2s}
-.bf4{right:9%;bottom:12%;font-size:30px;animation-delay:3s}
-.bf5{left:50%;top:5%;font-size:18px;animation-delay:1.5s}
-
-@keyframes floatFlower{
-  0%,100%{transform:translateY(0) rotate(-5deg)}
-  50%{transform:translateY(-14px) rotate(8deg)}
-}
-
-/* TARJETA */
-.card{
-  position:relative;
-  z-index:2;
-  width:min(430px,100%);
-  padding:34px 24px 30px;
-  text-align:center;
-  background:rgba(255,255,255,.80);
-  border:1px solid rgba(210,176,75,.2);
-  border-radius:28px;
-  box-shadow:0 18px 50px rgba(112,88,28,.12);
-  backdrop-filter:blur(8px);
-}
-
-/* INICIO */
-.intro h1{
-  margin:0 0 10px;
-  font-family:"Playfair Display",serif;
-  font-size:32px;
-  font-weight:600;
-  color:#3c3328;
-}
-
-.intro p{
-  margin:0 auto 25px;
-  color:#776c5a;
-  font-size:15px;
-}
-
-button{
-  border:0;
-  border-radius:999px;
-  padding:13px 27px;
-  font:600 15px "DM Sans",sans-serif;
-  color:#493a14;
-  background:#f6cf43;
-  box-shadow:0 8px 20px rgba(196,154,25,.20);
+.envelope-wrap{
+  width:min(360px,90vw);
   cursor:pointer;
-  transition:.25s ease;
+  perspective:1000px;
 }
 
-button:hover{
+.envelope{
+  position:relative;
+  width:100%;
+  height:235px;
+  background:#f8f0dc;
+  border-radius:5px;
+  box-shadow:
+    0 20px 50px rgba(83,65,31,.18),
+    0 3px 10px rgba(83,65,31,.08);
+  transition:transform .25s ease;
+}
+
+.envelope-wrap:hover .envelope{
+  transform:translateY(-4px);
+}
+
+.envelope-front{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:5px;
+  z-index:3;
+}
+
+.envelope-front::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:0;
+  border-left:50% solid transparent;
+  border-right:50% solid transparent;
+  border-bottom:150px solid #eadcbd;
+}
+
+.envelope-left{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:0;
+  border-top:117px solid transparent;
+  border-bottom:117px solid transparent;
+  border-left:175px solid #eee2c8;
+}
+
+.envelope-right{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:0;
+  height:0;
+  border-top:117px solid transparent;
+  border-bottom:117px solid transparent;
+  border-right:175px solid #e6d7b8;
+}
+
+.envelope-bottom{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:0;
+  border-left:180px solid transparent;
+  border-right:180px solid transparent;
+  border-bottom:130px solid #f1e6cc;
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:125px;
+  background:#e9dcc0;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  z-index:5;
+  transition:transform 1s cubic-bezier(.65,.05,.36,1);
+}
+
+.seal{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:105px;
+  transform:translateX(-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#d6a92d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:21px;
+  box-shadow:0 4px 12px rgba(93,70,15,.18);
+  transition:opacity .3s ease;
+}
+
+.envelope-text{
+  position:absolute;
+  z-index:7;
+  left:0;
+  right:0;
+  bottom:27px;
+  text-align:center;
+  color:#64563d;
+  letter-spacing:.4px;
+}
+
+.envelope-text strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:6px;
+}
+
+.envelope-text span{
+  font-size:13px;
+  opacity:.72;
+}
+
+.open-btn{
+  margin-top:24px;
+  border:0;
+  padding:13px 26px;
+  border-radius:30px;
+  background:#d7ad32;
+  color:white;
+  font-family:"DM Sans",sans-serif;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(121,92,18,.2);
+  transition:transform .2s ease,background .2s ease;
+}
+
+.open-btn:hover{
+  background:#c79d22;
   transform:translateY(-2px);
 }
 
-button:active{
-  transform:scale(.96);
+.open-btn:active{
+  transform:scale(.97);
 }
 
-/* CONTENIDO */
-.reveal{
-  display:none;
+.envelope-wrap.open .flap{
+  transform:rotateX(180deg);
 }
 
-.reveal.show{
-  display:block;
-  animation:appear .8s ease;
+.envelope-wrap.open .seal{
+  opacity:0;
 }
 
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+/* ---------------- CONTENIDO ---------------- */
+
+.content{
+  min-height:100vh;
+  position:relative;
+  padding:55px 20px 80px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 1.2s ease,transform 1.2s ease;
+  pointer-events:none;
 }
 
-/* NOMBRE */
-.name{
-  margin:0 0 8px;
+.content.show{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.card{
+  position:relative;
+  width:min(560px,100%);
+  margin:auto;
+  padding:35px 24px 45px;
+  background:rgba(255,252,243,.84);
+  border:1px solid rgba(173,143,63,.16);
+  border-radius:24px;
+  box-shadow:0 18px 60px rgba(87,69,29,.11);
+  backdrop-filter:blur(5px);
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(174,142,55,.12);
+  border-radius:18px;
+  pointer-events:none;
+}
+
+.verse{
+  position:relative;
+  z-index:2;
+  max-width:470px;
+  margin:0 auto 30px;
+  text-align:center;
+}
+
+.verse-text{
   font-family:"Playfair Display",serif;
-  font-size:31px;
-  font-weight:600;
-  color:#4c3b1d;
+  font-size:18px;
+  line-height:1.7;
+  color:#5a4b32;
 }
 
-.name-line{
-  width:42px;
-  height:2px;
-  margin:0 auto 10px;
-  background:#e2bd3d;
-  border-radius:10px;
+.verse-reference{
+  margin-top:12px;
+  font-size:13px;
+  letter-spacing:.5px;
+  color:#9a7b32;
 }
 
-/* GIRASOL */
+.divider{
+  width:55px;
+  height:1px;
+  background:#d4b45d;
+  margin:25px auto 28px;
+  opacity:.65;
+}
+
+.name{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  font-size:42px;
+  font-weight:500;
+  color:#4b402e;
+  margin:0;
+}
+
+.subtitle{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  margin:7px 0 25px;
+  font-size:12px;
+  color:#a18545;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.message{
+  position:relative;
+  z-index:2;
+  max-width:470px;
+  margin:0 auto;
+  text-align:center;
+  font-size:15px;
+  line-height:1.85;
+  color:#5b5141;
+  white-space:pre-line;
+  opacity:0;
+  transform:translateY(15px);
+  transition:opacity 1.2s ease .7s,transform 1.2s ease .7s;
+}
+
+.content.show .message{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------------- GIRASOL ---------------- */
+
 .sunflower{
   position:relative;
   width:210px;
   height:270px;
-  margin:0 auto;
+  margin:25px auto 0;
 }
 
 .flower{
@@ -226,233 +414,343 @@ button:active{
   transform:scaleX(-1) rotate(22deg);
 }
 
-/* MENSAJE */
-.message{
-  margin-top:-2px;
-  padding:20px 10px 0;
-  border-top:1px solid rgba(155,126,49,.16);
-  animation:messageAppear 1s ease .35s both;
-}
+/* ---------------- FLORES QUE CAEN ---------------- */
 
-@keyframes messageAppear{
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.message p{
-  margin:0 0 16px;
-  font-size:14.5px;
-  line-height:1.72;
-  color:#5e5548;
-}
-
-.message .final{
-  margin-top:20px;
-  font-family:"Playfair Display",serif;
-  font-size:21px;
-  color:#4b3b20;
-}
-
-/* FLORES */
-.fall{
+.falling{
   position:fixed;
-  top:-35px;
-  z-index:10;
+  inset:0;
   pointer-events:none;
+  overflow:hidden;
+  z-index:30;
+}
+
+.fall{
+  position:absolute;
+  top:-50px;
   animation:fall linear forwards;
-  opacity:0;
+  opacity:.9;
 }
 
 @keyframes fall{
   0%{
-    transform:translateY(-40px) rotate(0deg);
+    transform:translateY(-50px) rotate(0deg);
     opacity:0;
   }
-  10%{opacity:.8}
-  90%{opacity:.65}
-  100%{
-    transform:translateY(110vh) rotate(420deg);
-    opacity:0;
-  }
-}
-
-/* DESTELLOS */
-.spark{
-  position:fixed;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:#f4cd4a;
-  pointer-events:none;
-  z-index:9;
-  animation:sparkle 1.8s ease-out forwards;
-}
-
-@keyframes sparkle{
-  0%{
-    transform:scale(0);
-    opacity:0;
-  }
-  30%{
-    transform:scale(1);
-    opacity:.7;
+  10%{
+    opacity:.95;
   }
   100%{
-    transform:scale(0);
+    transform:translateY(110vh) rotate(360deg);
     opacity:0;
   }
 }
-</style></head><body><div class="background-flower bf1">🌻</div>
-<div class="background-flower bf2">🌼</div>
-<div class="background-flower bf3">🌻</div>
-<div class="background-flower bf4">🌼</div>
-<div class="background-flower bf5">✦</div><!-- MÚSICA --><audio id="musica" loop preload="auto">
-  <source src="flores-amarillas.mp3" type="audio/mpeg">
-</audio><main class="card">  <section class="intro" id="intro">
-    <h1>Un pequeño detalle 🌻</h1>
-    <p>Hay algo que quiero entregarte.</p>
-    <button id="openBtn">Abrir 🌻</button>
-  </section>  <section class="reveal" id="reveal"><h2 class="name">Sarita</h2>
-<div class="name-line"></div>
 
-<div class="sunflower">
+/* ---------------- RESPONSIVE ---------------- */
 
-  <div class="flower">
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <div class="center"></div>
+@media(max-width:430px){
+
+  .envelope{
+    height:215px;
+  }
+
+  .envelope-left{
+    border-top-width:107px;
+    border-bottom-width:107px;
+    border-left-width:160px;
+  }
+
+  .envelope-right{
+    border-top-width:107px;
+    border-bottom-width:107px;
+    border-right-width:160px;
+  }
+
+  .envelope-bottom{
+    border-left-width:160px;
+    border-right-width:160px;
+    border-bottom-width:120px;
+  }
+
+  .flap{
+    height:115px;
+  }
+
+  .seal{
+    top:96px;
+  }
+
+  .envelope-text{
+    bottom:23px;
+  }
+
+  .card{
+    padding:30px 18px 38px;
+  }
+
+  .verse-text{
+    font-size:16px;
+  }
+
+  .name{
+    font-size:37px;
+  }
+
+  .message{
+    font-size:14px;
+    line-height:1.8;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA DE LA CARTA -->
+<section class="intro" id="intro">
+
+  <div class="envelope-wrap" id="envelopeWrap">
+
+    <div class="envelope">
+
+      <div class="flap"></div>
+
+      <div class="envelope-front">
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        <div class="envelope-bottom"></div>
+      </div>
+
+      <div class="seal">🌻</div>
+
+      <div class="envelope-text">
+        <strong>Un pequeño detalle</strong>
+        <span>Hay algo que quiero entregarte.</span>
+      </div>
+
+    </div>
+
+    <button class="open-btn" id="openBtn">
+      Abrir 💌
+    </button>
+
   </div>
 
-  <div class="stem"></div>
-  <div class="leaf left"></div>
-  <div class="leaf right"></div>
+</section>
 
-</div>
 
-<div class="message">
+<!-- CONTENIDO DE LA CARTA -->
+<main class="content" id="content">
 
-  <p>
-    Que estas flores puedan<br>
-    sacarte una sonrisa<br>
-    y alegrarte un poquito el día.
-  </p>
+  <div class="card">
 
-  <p>
-    A la distancia te envío estas<br>
-    flores amarillas.
-  </p>
+    <div class="verse">
 
-  <p>
-    Sé que quizás esta vez, por el tiempo y el día,<br>
-    no pude enviarlas como la última vez.
-  </p>
+      <div class="verse-text">
+        “Es mejor ser dos que uno, porque ambos pueden ayudarse
+        mutuamente a lograr el éxito. Si uno cae, el otro puede
+        darle la mano y ayudarle; pero el que cae y está solo,
+        ese sí que está en problemas.”
+      </div>
 
-  <p>
-    Sin embargo, espero que este detalle<br>
-    sea de bendición para ti.
-  </p>
+      <div class="verse-reference">
+        Eclesiastés 4:9-10 · NTV
+      </div>
 
-  <p>
-    Lo hice porque considero que te lo mereces,<br>
-    por lo que eres, por lo que haces.<br>
-    Eres de bendición.
-  </p>
+    </div>
 
-  <p>
-    Una de las pocas amistades en las cuales<br>
-    me puedo expresar, ayudar,<br>
-    y donde no tengo que forzar<br>
-    para que funcione como amistad.
-  </p>
+    <div class="divider"></div>
 
-  <p>Gracias.</p>
+    <h1 class="name">Sarita</h1>
 
-  <p class="final">Bendiciones 🌻</p>
+    <div class="subtitle">Un pequeño detalle</div>
 
-</div>
 
-  </section>
-</main><script>
+    <div class="sunflower">
 
-const btn = document.getElementById("openBtn");
+      <div class="flower">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="center"></div>
+
+      </div>
+
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+
+    </div>
+
+
+    <div class="message">
+Que estas flores puedan
+sacarte una sonrisa
+y alegrarte un poquito el día.
+
+A la distancia te envío estas
+flores amarillas.
+
+Sé que quizás esta vez, por el tiempo y el día,
+no pude enviarlas como la última vez.
+
+Sin embargo, espero que este detalle
+sea de bendición para ti.
+
+Lo hice porque considero que te lo mereces,
+por lo que eres, por lo que haces.
+
+Eres de bendición.
+
+Una de las pocas amistades en las cuales
+me puedo expresar, ayudar,
+y donde no tengo que forzar
+para que funcione como amistad.
+
+Gracias.
+
+Bendiciones 🌻
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- FLORES QUE CAEN -->
+<div class="falling" id="falling"></div>
+
+
+<!-- MÚSICA -->
+<audio id="musica" loop preload="auto">
+  <source src="flores-amarillas.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
 const intro = document.getElementById("intro");
-const reveal = document.getElementById("reveal");
+const content = document.getElementById("content");
+const envelopeWrap = document.getElementById("envelopeWrap");
+const openBtn = document.getElementById("openBtn");
 const musica = document.getElementById("musica");
+const falling = document.getElementById("falling");
 
-btn.addEventListener("click", () => {
+openBtn.addEventListener("click", abrirCarta);
 
-  /* REPRODUCIR MÚSICA */
-  musica.currentTime = 0;
-  musica.play().catch(() => {
-    console.log("El navegador bloqueó la reproducción.");
-  });
-
-  /* MOSTRAR CONTENIDO */
-  intro.style.display = "none";
-  reveal.classList.add("show");
-
-  /* MUCHAS FLORES */
-  const flowers = [
-    "🌻","🌻","🌻","🌼","🌻",
-    "🌼","🌻","🌻","🌼","🌻",
-    "🌻","🌼","🌻","🌻","🌼",
-    "🌻","🌼","🌻","🌻","🌼",
-    "🌻","🌻","🌼","🌻","🌼",
-    "🌻","🌻","🌼","🌻","🌻"
-  ];
-
-  flowers.forEach((flower) => {
-
-    const f = document.createElement("span");
-
-    f.className = "fall";
-    f.textContent = flower;
-    f.style.left = Math.random() * 100 + "vw";
-    f.style.fontSize = (15 + Math.random() * 17) + "px";
-    f.style.animationDuration = (4 + Math.random() * 4) + "s";
-    f.style.animationDelay = (Math.random() * 2.5) + "s";
-
-    document.body.appendChild(f);
-
-    setTimeout(() => f.remove(), 8500);
-  });
-
-  /* DESTELLOS */
-  for(let i = 0; i < 24; i++){
-
-    setTimeout(() => {
-
-      const s = document.createElement("span");
-
-      s.className = "spark";
-      s.style.left = (8 + Math.random() * 84) + "vw";
-      s.style.top = (8 + Math.random() * 84) + "vh";
-
-      document.body.appendChild(s);
-
-      setTimeout(() => s.remove(), 1900);
-
-    }, i * 90);
+envelopeWrap.addEventListener("click", function(e){
+  if(e.target !== openBtn){
+    abrirCarta();
   }
-
 });
 
-</script></body>
-</html>
+function abrirCarta(){
 
+  if(envelopeWrap.classList.contains("open")) return;
+
+  envelopeWrap.classList.add("open");
+
+  /* Intentar iniciar la música con la interacción del usuario */
+  musica.currentTime = 0;
+  musica.play().catch(() => {
+    console.log("No se pudo iniciar el audio.");
+  });
+
+  setTimeout(() => {
+    intro.classList.add("hide");
+    content.classList.add("show");
+
+    crearFlores();
+    crearDestellos();
+
+  }, 950);
+}
+
+
+/* ---------------- FLORES ---------------- */
+
+function crearFlores(){
+
+  const flores = ["🌻","🌼","🌻","🌼","🌻","🌼"];
+
+  for(let i=0;i<30;i++){
+
+    const flower = document.createElement("div");
+
+    flower.className = "fall";
+
+    flower.textContent =
+      flores[Math.floor(Math.random()*flores.length)];
+
+    flower.style.left =
+      Math.random()*100 + "%";
+
+    flower.style.fontSize =
+      (16 + Math.random()*16) + "px";
+
+    flower.style.animationDuration =
+      (4 + Math.random()*5) + "s";
+
+    flower.style.animationDelay =
+      Math.random()*3 + "s";
+
+    falling.appendChild(flower);
+
+    setTimeout(() => {
+      flower.remove();
+    }, 10000);
+  }
+}
+
+
+/* ---------------- DESTELLOS ---------------- */
+
+function crearDestellos(){
+
+  const simbolos = ["✦","✧","·","✦"];
+
+  for(let i=0;i<24;i++){
+
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "fall";
+
+    sparkle.textContent =
+      simbolos[Math.floor(Math.random()*simbolos.length)];
+
+    sparkle.style.left =
+      Math.random()*100 + "%";
+
+    sparkle.style.fontSize =
+      (10 + Math.random()*12) + "px";
+
+    sparkle.style.animationDuration =
+      (4 + Math.random()*5) + "s";
+
+    sparkle.style.animationDelay =
+      Math.random()*4 + "s";
+
+    sparkle.style.opacity = ".5";
+
+    falling.appendChild(sparkle);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 10000);
+  }
+}
+
+</script>
+
+</body>
+</html>
