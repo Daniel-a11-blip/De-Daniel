@@ -4,307 +4,416 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Para Sarita 🌻</title>
+<title>Flores amarillas 🌻</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
-    font-family:Arial,sans-serif;
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
 
-    background:linear-gradient(
-        160deg,
-        #fffdf2,
-        #fff1a8
-    );
+    font-family: "DM Sans", sans-serif;
 
-    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 20%, #fff8cf 0%, transparent 30%),
+        linear-gradient(
+            135deg,
+            #fffdf3 0%,
+            #fff7d7 100%
+        );
+
+    color: #5f5139;
+}
+
+/* PANTALLA */
+
+.pantalla {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
 }
 
 /* TARJETA */
 
-.card{
-    width:90%;
-    max-width:400px;
+.card {
+    width: min(92%, 450px);
+    padding: 40px 27px;
 
-    padding:35px 25px;
+    text-align: center;
 
-    text-align:center;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(15px);
 
-    background:rgba(255,255,255,.8);
-
-    border-radius:30px;
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 32px;
 
     box-shadow:
-        0 20px 50px rgba(120,90,0,.18);
+        0 20px 60px rgba(160,120,20,.13);
 
-    animation:entrada 1s ease;
+    transition: .7s ease;
 }
 
-@keyframes entrada{
-    from{
-        opacity:0;
-        transform:translateY(30px);
+/* INICIO */
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(30px, 8vw, 42px);
+
+    font-weight: 500;
+
+    color: #79551d;
+
+    margin: 0 0 12px;
+}
+
+.intro {
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #81745d;
+
+    margin: 0 0 28px;
+}
+
+/* BOTÓN */
+
+button {
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #ffd94a,
+        #f2b900
+    );
+
+    color: #65470b;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(215,157,0,.23);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(215,157,0,.30);
+}
+
+button:active {
+    transform: scale(.94);
+}
+
+/* CONTENIDO OCULTO */
+
+.sorpresa {
+    display: none;
+    opacity: 0;
+}
+
+.sorpresa.mostrar {
+    display: block;
+
+    animation: aparecer 1.2s ease forwards;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-}
-
-/* NOMBRE */
-
-.nombre{
-    margin:0;
-
-    font-family:"Brush Script MT",
-                "Segoe Script",
-                cursive;
-
-    font-size:58px;
-
-    font-weight:normal;
-
-    color:#d89b00;
-
-    text-shadow:
-        2px 3px 0 #ffe89a;
-}
-
-/* TEXTO */
-
-.subtitulo{
-    margin-top:8px;
-
-    font-size:15px;
-
-    color:#777;
-
-    letter-spacing:.5px;
 }
 
 /* GIRASOL */
 
-.flor{
-    width:210px;
-    height:240px;
+.flor {
+    width: 210px;
+    height: 245px;
 
-    margin:20px auto;
+    margin: 0 auto 25px;
 
-    position:relative;
+    position: relative;
 
-    animation:balanceo 4s ease-in-out infinite;
+    animation: balanceo 5s ease-in-out infinite;
 }
 
-@keyframes balanceo{
+.petalo {
+    position: absolute;
 
-    0%,100%{
-        transform:rotate(-2deg);
-    }
+    width: 43px;
+    height: 92px;
 
-    50%{
-        transform:rotate(2deg);
-    }
-}
+    left: 83px;
+    top: 8px;
 
-/* PETALOS */
+    border-radius: 50%;
 
-.petalo{
-
-    position:absolute;
-
-    width:45px;
-    height:85px;
-
-    left:82px;
-    top:5px;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        #ffe96b,
-        #f5b900
+    background: linear-gradient(
+        180deg,
+        #ffe968,
+        #f4b900
     );
 
-    transform-origin:23px 100px;
+    transform-origin: 21px 101px;
+
+    box-shadow:
+        0 3px 8px rgba(190,130,0,.12);
 }
 
-.p1{transform:rotate(0deg)}
-.p2{transform:rotate(30deg)}
-.p3{transform:rotate(60deg)}
-.p4{transform:rotate(90deg)}
-.p5{transform:rotate(120deg)}
-.p6{transform:rotate(150deg)}
-.p7{transform:rotate(180deg)}
-.p8{transform:rotate(210deg)}
-.p9{transform:rotate(240deg)}
-.p10{transform:rotate(270deg)}
-.p11{transform:rotate(300deg)}
-.p12{transform:rotate(330deg)}
+.p1  { transform: rotate(0deg); }
+.p2  { transform: rotate(30deg); }
+.p3  { transform: rotate(60deg); }
+.p4  { transform: rotate(90deg); }
+.p5  { transform: rotate(120deg); }
+.p6  { transform: rotate(150deg); }
+.p7  { transform: rotate(180deg); }
+.p8  { transform: rotate(210deg); }
+.p9  { transform: rotate(240deg); }
+.p10 { transform: rotate(270deg); }
+.p11 { transform: rotate(300deg); }
+.p12 { transform: rotate(330deg); }
 
-/* CENTRO */
+.centro {
+    position: absolute;
 
-.centro{
+    width: 82px;
+    height: 82px;
 
-    position:absolute;
+    left: 64px;
+    top: 64px;
 
-    width:85px;
-    height:85px;
-
-    left:62px;
-    top:62px;
-
-    border-radius:50%;
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle,
-            #9b681d,
-            #593209
+            circle at 35% 30%,
+            #a36b1c,
+            #633709
         );
 
     box-shadow:
-        inset 0 0 0 5px rgba(40,20,0,.15);
+        inset 0 0 0 5px rgba(50,25,0,.14);
 
-    z-index:2;
+    z-index: 2;
 }
+
+/* SEMILLAS */
+
+.semilla {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #4d2b07;
+
+    z-index: 3;
+}
+
+.s1 { left: 92px; top: 91px; }
+.s2 { left: 112px; top: 85px; }
+.s3 { left: 134px; top: 94px; }
+.s4 { left: 87px; top: 111px; }
+.s5 { left: 109px; top: 108px; }
+.s6 { left: 133px; top: 112px; }
+.s7 { left: 96px; top: 130px; }
+.s8 { left: 119px; top: 133px; }
+.s9 { left: 139px; top: 128px; }
 
 /* TALLO */
 
-.tallo{
+.tallo {
+    position: absolute;
 
-    position:absolute;
+    width: 11px;
+    height: 105px;
 
-    width:12px;
-    height:105px;
+    left: 99px;
+    top: 138px;
 
-    left:99px;
-    top:135px;
+    background: linear-gradient(
+        90deg,
+        #3e7c32,
+        #5b9843
+    );
 
-    background:#579b40;
+    border-radius: 10px;
 
-    border-radius:20px;
-
-    z-index:-1;
+    z-index: -1;
 }
 
 /* HOJAS */
 
-.hoja{
+.hoja {
+    position: absolute;
 
-    position:absolute;
+    width: 70px;
+    height: 30px;
 
-    width:70px;
-    height:32px;
+    background: #57983f;
 
-    background:#64a84b;
+    border-radius: 100% 0 100% 0;
 
-    border-radius:100% 0 100% 0;
-
-    top:175px;
+    top: 185px;
 }
 
-.izquierda{
-    left:28px;
-    transform:rotate(25deg);
+.hoja.izquierda {
+    left: 30px;
+    transform: rotate(25deg);
 }
 
-.derecha{
-    right:28px;
-    transform:scaleX(-1) rotate(25deg);
+.hoja.derecha {
+    right: 30px;
+    transform: scaleX(-1) rotate(25deg);
 }
 
-/* BOTON */
+/* TEXTO */
 
-button{
+.texto {
+    text-align: left;
 
-    border:0;
+    font-size: 16px;
 
-    padding:15px 27px;
+    line-height: 1.75;
 
-    border-radius:50px;
+    color: #655b4b;
 
-    background:#f5bd18;
-
-    color:#624500;
-
-    font-family:Arial,sans-serif;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    box-shadow:
-        0 7px 18px rgba(180,130,0,.25);
-
-    transition:.2s;
+    white-space: normal;
 }
 
-button:active{
-    transform:scale(.92);
+.texto p {
+    margin: 0 0 18px;
 }
 
-/* MENSAJE */
+.final {
+    text-align: center;
 
-.mensaje{
+    font-family: "Playfair Display", serif;
 
-    max-height:0;
+    font-size: 20px;
 
-    opacity:0;
+    color: #76521a;
 
-    overflow:hidden;
-
-    color:#666;
-
-    font-size:16px;
-
-    line-height:1.6;
-
-    transition:.7s;
+    margin-top: 25px;
 }
 
-.mensaje.mostrar{
+/* PÉTALOS FLOTANTES */
 
-    max-height:160px;
+.caido {
+    position: fixed;
 
-    opacity:1;
+    top: -30px;
 
-    margin-top:20px;
+    pointer-events: none;
+
+    z-index: 20;
+
+    animation: caer linear forwards;
 }
 
-/* FLORES QUE CAEN */
+@keyframes caer {
 
-.caida{
-
-    position:fixed;
-
-    top:-30px;
-
-    font-size:22px;
-
-    animation:caer 4s linear forwards;
-
-    pointer-events:none;
-}
-
-@keyframes caer{
-
-    to{
+    to {
         transform:
             translateY(110vh)
             rotate(360deg);
 
-        opacity:0;
+        opacity: 0;
+    }
+}
+
+/* BALANCEO */
+
+@keyframes balanceo {
+
+    0%, 100% {
+        transform:
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            rotate(2deg);
+    }
+}
+
+/* CELULAR */
+
+@media (max-width: 450px) {
+
+    .pantalla {
+        padding: 18px 12px;
+        align-items: flex-start;
+        padding-top: 25px;
+    }
+
+    .card {
+        padding: 32px 21px;
+        margin-bottom: 20px;
+    }
+
+    .titulo {
+        font-size: 31px;
+    }
+
+    .intro {
+        font-size: 15px;
+    }
+
+    .texto {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .flor {
+        transform: scale(.88);
+        margin-top: -5px;
+        margin-bottom: 5px;
     }
 }
 
@@ -313,117 +422,174 @@ button:active{
 
 <body>
 
-<div class="card">
+<div class="pantalla">
+
+    <div class="card">
+
+        <!-- PANTALLA INICIAL -->
+
+        <div class="inicio" id="inicio">
+
+            <h1 class="titulo">
+                Un pequeño detalle 🌻
+            </h1>
+
+            <p class="intro">
+                Hay algo que quiero entregarte.
+            </p>
+
+            <button id="boton">
+                Abrir 🌻
+            </button>
+
+        </div>
 
 
-    <div class="subtitulo">
-        Una pequeña sorpresa para ti 🌻
-    </div>
+        <!-- SORPRESA -->
 
-    <div class="flor">
+        <div class="sorpresa" id="sorpresa">
 
-        <div class="petalo p1"></div>
-        <div class="petalo p2"></div>
-        <div class="petalo p3"></div>
-        <div class="petalo p4"></div>
-        <div class="petalo p5"></div>
-        <div class="petalo p6"></div>
-        <div class="petalo p7"></div>
-        <div class="petalo p8"></div>
-        <div class="petalo p9"></div>
-        <div class="petalo p10"></div>
-        <div class="petalo p11"></div>
-        <div class="petalo p12"></div>
+            <!-- GIRASOL -->
 
-        <div class="centro"></div>
+            <div class="flor">
 
-        <div class="tallo"></div>
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="petalo p6"></div>
+                <div class="petalo p7"></div>
+                <div class="petalo p8"></div>
+                <div class="petalo p9"></div>
+                <div class="petalo p10"></div>
+                <div class="petalo p11"></div>
+                <div class="petalo p12"></div>
 
-        <div class="hoja izquierda"></div>
-        <div class="hoja derecha"></div>
+                <div class="centro"></div>
 
-    </div>
+                <div class="semilla s1"></div>
+                <div class="semilla s2"></div>
+                <div class="semilla s3"></div>
+                <div class="semilla s4"></div>
+                <div class="semilla s5"></div>
+                <div class="semilla s6"></div>
+                <div class="semilla s7"></div>
+                <div class="semilla s8"></div>
+                <div class="semilla s9"></div>
 
-    <button id="boton">
-        Toca aquí 🌻
-    </button>
+                <div class="tallo"></div>
 
-    <div class="mensaje" id="mensaje">
+                <div class="hoja izquierda"></div>
+                <div class="hoja derecha"></div>
 
-        Que estas flores puedan
-        sacarte una sonrisa
-        y alegrarte un poquito el día
-        A la distancia te envio estas 
-        flores amarillas
-        Se que quizas esta vez por el tiempo, dia 
-        no pude enviarlas como la ultima vez
-        Sin embargo espero que este detalle 
-        sea de bendicion para ti
-        Lo hice porque considero que te lo mereces
-        por lo que eres, por lo que haces
-        Eres de bendicion.
-        Una de las pocas amistades donde las cuales 
-        me puedo expresar, ayudar, y donde no tengo que 
-        forzar para que funcione como amistad
-        Gracias
-        Bendiciones
+            </div>
 
 
-        <br><br>
+            <!-- MENSAJE -->
 
-        ✨ Para Sarita ✨
+            <div class="texto">
+
+                <p>
+                    Que estas flores puedan<br>
+                    sacarte una sonrisa<br>
+                    y alegrarte un poquito el día.
+                </p>
+
+                <p>
+                    A la distancia te envío estas
+                    flores amarillas.
+                </p>
+
+                <p>
+                    Sé que quizás esta vez, por el tiempo
+                    y el día, no pude enviarlas como la
+                    última vez.
+                </p>
+
+                <p>
+                    Sin embargo, espero que este detalle
+                    sea de bendición para ti.
+                </p>
+
+                <p>
+                    Lo hice porque considero que te lo
+                    mereces, por lo que eres, por lo que haces.
+                </p>
+
+                <p>
+                    Eres de bendición.
+                </p>
+
+                <p>
+                    Una de las pocas amistades en las cuales
+                    me puedo expresar, ayudar, y donde no
+                    tengo que forzar para que funcione
+                    como amistad.
+                </p>
+
+                <p>
+                    Gracias.
+                </p>
+
+                <div class="final">
+                    Bendiciones 🌻
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
+
 <script>
 
-const boton =
-document.getElementById("boton");
+const boton = document.getElementById("boton");
+const inicio = document.getElementById("inicio");
+const sorpresa = document.getElementById("sorpresa");
 
-const mensaje =
-document.getElementById("mensaje");
+boton.addEventListener("click", () => {
 
-boton.onclick = function(){
+    inicio.style.display = "none";
 
-    mensaje.classList.toggle("mostrar");
+    sorpresa.classList.add("mostrar");
 
-    if(mensaje.classList.contains("mostrar")){
+    crearFlores();
 
-        boton.innerHTML =
-        "🌻 Para Sarita 🌻";
+});
 
-        for(let i=0;i<18;i++){
 
-            let flor =
-            document.createElement("div");
+function crearFlores() {
 
-            flor.className="caida";
+    for (let i = 0; i < 16; i++) {
 
-            flor.innerHTML="🌻";
+        const flor = document.createElement("div");
 
-            flor.style.left =
-            Math.random()*100+"%";
+        flor.className = "caido";
+        flor.textContent = "🌻";
 
-            flor.style.animationDuration =
-            3+Math.random()*3+"s";
+        flor.style.left =
+            Math.random() * 100 + "%";
 
-            document.body.appendChild(flor);
+        flor.style.fontSize =
+            (16 + Math.random() * 10) + "px";
 
-            setTimeout(()=>{
-                flor.remove();
-            },6500);
-        }
+        flor.style.animationDuration =
+            (3.5 + Math.random() * 3) + "s";
 
-    }else{
+        flor.style.animationDelay =
+            Math.random() * 1.5 + "s";
 
-        boton.innerHTML =
-        "Toca aquí 🌻";
+        document.body.appendChild(flor);
 
+        setTimeout(() => {
+            flor.remove();
+        }, 7500);
     }
-
-};
+}
 
 </script>
 
