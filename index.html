@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Sarita 🌻</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Arial,sans-serif;
+
+    background:linear-gradient(
+        160deg,
+        #fffdf2,
+        #fff1a8
+    );
+
+    overflow:hidden;
+}
+
+/* TARJETA */
+
+.card{
+    width:90%;
+    max-width:400px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.8);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 20px 50px rgba(120,90,0,.18);
+
+    animation:entrada 1s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* NOMBRE */
+
+.nombre{
+    margin:0;
+
+    font-family:"Brush Script MT",
+                "Segoe Script",
+                cursive;
+
+    font-size:58px;
+
+    font-weight:normal;
+
+    color:#d89b00;
+
+    text-shadow:
+        2px 3px 0 #ffe89a;
+}
+
+/* TEXTO */
+
+.subtitulo{
+    margin-top:8px;
+
+    font-size:15px;
+
+    color:#777;
+
+    letter-spacing:.5px;
+}
+
+/* GIRASOL */
+
+.flor{
+    width:210px;
+    height:240px;
+
+    margin:20px auto;
+
+    position:relative;
+
+    animation:balanceo 4s ease-in-out infinite;
+}
+
+@keyframes balanceo{
+
+    0%,100%{
+        transform:rotate(-2deg);
+    }
+
+    50%{
+        transform:rotate(2deg);
+    }
+}
+
+/* PETALOS */
+
+.petalo{
+
+    position:absolute;
+
+    width:45px;
+    height:85px;
+
+    left:82px;
+    top:5px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        #ffe96b,
+        #f5b900
+    );
+
+    transform-origin:23px 100px;
+}
+
+.p1{transform:rotate(0deg)}
+.p2{transform:rotate(30deg)}
+.p3{transform:rotate(60deg)}
+.p4{transform:rotate(90deg)}
+.p5{transform:rotate(120deg)}
+.p6{transform:rotate(150deg)}
+.p7{transform:rotate(180deg)}
+.p8{transform:rotate(210deg)}
+.p9{transform:rotate(240deg)}
+.p10{transform:rotate(270deg)}
+.p11{transform:rotate(300deg)}
+.p12{transform:rotate(330deg)}
+
+/* CENTRO */
+
+.centro{
+
+    position:absolute;
+
+    width:85px;
+    height:85px;
+
+    left:62px;
+    top:62px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #9b681d,
+            #593209
+        );
+
+    box-shadow:
+        inset 0 0 0 5px rgba(40,20,0,.15);
+
+    z-index:2;
+}
+
+/* TALLO */
+
+.tallo{
+
+    position:absolute;
+
+    width:12px;
+    height:105px;
+
+    left:99px;
+    top:135px;
+
+    background:#579b40;
+
+    border-radius:20px;
+
+    z-index:-1;
+}
+
+/* HOJAS */
+
+.hoja{
+
+    position:absolute;
+
+    width:70px;
+    height:32px;
+
+    background:#64a84b;
+
+    border-radius:100% 0 100% 0;
+
+    top:175px;
+}
+
+.izquierda{
+    left:28px;
+    transform:rotate(25deg);
+}
+
+.derecha{
+    right:28px;
+    transform:scaleX(-1) rotate(25deg);
+}
+
+/* BOTON */
+
+button{
+
+    border:0;
+
+    padding:15px 27px;
+
+    border-radius:50px;
+
+    background:#f5bd18;
+
+    color:#624500;
+
+    font-family:Arial,sans-serif;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 7px 18px rgba(180,130,0,.25);
+
+    transition:.2s;
+}
+
+button:active{
+    transform:scale(.92);
+}
+
+/* MENSAJE */
+
+.mensaje{
+
+    max-height:0;
+
+    opacity:0;
+
+    overflow:hidden;
+
+    color:#666;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    transition:.7s;
+}
+
+.mensaje.mostrar{
+
+    max-height:160px;
+
+    opacity:1;
+
+    margin-top:20px;
+}
+
+/* FLORES QUE CAEN */
+
+.caida{
+
+    position:fixed;
+
+    top:-30px;
+
+    font-size:22px;
+
+    animation:caer 4s linear forwards;
+
+    pointer-events:none;
+}
+
+@keyframes caer{
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1 class="nombre">Sarita</h1>
+
+    <div class="subtitulo">
+        Una pequeña sorpresa para ti 🌻
+    </div>
+
+    <div class="flor">
+
+        <div class="petalo p1"></div>
+        <div class="petalo p2"></div>
+        <div class="petalo p3"></div>
+        <div class="petalo p4"></div>
+        <div class="petalo p5"></div>
+        <div class="petalo p6"></div>
+        <div class="petalo p7"></div>
+        <div class="petalo p8"></div>
+        <div class="petalo p9"></div>
+        <div class="petalo p10"></div>
+        <div class="petalo p11"></div>
+        <div class="petalo p12"></div>
+
+        <div class="centro"></div>
+
+        <div class="tallo"></div>
+
+        <div class="hoja izquierda"></div>
+        <div class="hoja derecha"></div>
+
+    </div>
+
+    <button id="boton">
+        Toca aquí 🌻
+    </button>
+
+    <div class="mensaje" id="mensaje">
+
+        Que estas flores puedan
+        sacarte una sonrisa
+        y alegrarte un poquito el día. 💛
+
+        <br><br>
+
+        ✨ Para Sarita ✨
+
+    </div>
+
+</div>
+
+<script>
+
+const boton =
+document.getElementById("boton");
+
+const mensaje =
+document.getElementById("mensaje");
+
+boton.onclick = function(){
+
+    mensaje.classList.toggle("mostrar");
+
+    if(mensaje.classList.contains("mostrar")){
+
+        boton.innerHTML =
+        "🌻 Para Sarita 🌻";
+
+        for(let i=0;i<18;i++){
+
+            let flor =
+            document.createElement("div");
+
+            flor.className="caida";
+
+            flor.innerHTML="🌻";
+
+            flor.style.left =
+            Math.random()*100+"%";
+
+            flor.style.animationDuration =
+            3+Math.random()*3+"s";
+
+            document.body.appendChild(flor);
+
+            setTimeout(()=>{
+                flor.remove();
+            },6500);
+        }
+
+    }else{
+
+        boton.innerHTML =
+        "Toca aquí 🌻";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
