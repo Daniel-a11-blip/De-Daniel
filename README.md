@@ -4,471 +4,366 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🌻 Para ti</title>
+<title>Para Sarita 🌻</title>
 
 <style>
+
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: Georgia, serif;
-    background: linear-gradient(
-        180deg,
-        #bde9ff 0%,
-        #eaf8ff 65%,
-        #b7d98a 65%,
-        #82b45c 100%
-    );
-}
-
-/* Mensaje */
-
-.mensaje {
-    position: absolute;
-    top: 45px;
-    left: 0;
+html, body {
+    margin: 0;
     width: 100%;
-    text-align: center;
-    color: #72501c;
-    font-size: clamp(24px, 6vw, 38px);
-    font-weight: bold;
-    z-index: 10;
-    text-shadow: 0 2px 4px rgba(255,255,255,.7);
+    min-height: 100%;
 }
 
-/* Jardín */
+body {
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 25%, #fff8cf 0%, transparent 25%),
+        linear-gradient(180deg, #8ed8f5 0%, #dff5f4 70%, #91bd63 70%, #6d9f4c 100%);
+}
 
-.jardin {
-    position: absolute;
-    inset: 0;
+/* Pantalla */
+
+.pantalla {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 3vh;
+    align-items: center;
+    position: relative;
 }
 
-/* SVG */
+/* Tarjeta */
 
-svg {
-    width: min(700px, 100vw);
-    height: min(650px, 78vh);
+.tarjeta {
+    width: min(92%, 430px);
+    padding: 35px 25px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
 }
 
-/* Movimiento suave */
+.nombre {
+    font-size: clamp(38px, 11vw, 58px);
+    color: #6f4a18;
+    margin: 0 0 8px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.subtitulo {
+    color: #80632f;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* Girasol principal */
 
 .girasol {
-    transform-box: fill-box;
-    transform-origin: bottom center;
-    animation: viento 5s ease-in-out infinite;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 8px;
+    position: relative;
+    animation: balanceo 5s ease-in-out infinite;
 }
 
-.girasol:nth-of-type(2) {
-    animation-delay: .8s;
+.petalo {
+    position: absolute;
+    width: 43px;
+    height: 100px;
+    background: linear-gradient(#ffe44c, #f7bd18);
+    border-radius: 50%;
+    left: 104px;
+    top: 20px;
+    transform-origin: 21px 105px;
 }
 
-.girasol:nth-of-type(3) {
-    animation-delay: 1.5s;
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(30deg); }
+.p3 { transform: rotate(60deg); }
+.p4 { transform: rotate(90deg); }
+.p5 { transform: rotate(120deg); }
+.p6 { transform: rotate(150deg); }
+.p7 { transform: rotate(180deg); }
+.p8 { transform: rotate(210deg); }
+.p9 { transform: rotate(240deg); }
+.p10 { transform: rotate(270deg); }
+.p11 { transform: rotate(300deg); }
+.p12 { transform: rotate(330deg); }
+
+.centro {
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    background:
+        radial-gradient(circle at 35% 30%, #a66b1c, #70400c 70%);
+    border-radius: 50%;
+    left: 79px;
+    top: 79px;
+    box-shadow: inset 0 0 0 5px rgba(75,40,5,.18);
 }
 
-@keyframes viento {
+/* Semillas */
+
+.semilla {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #4e2d08;
+    border-radius: 50%;
+}
+
+.s1 { left: 105px; top: 105px; }
+.s2 { left: 128px; top: 98px; }
+.s3 { left: 150px; top: 110px; }
+.s4 { left: 100px; top: 130px; }
+.s5 { left: 125px; top: 125px; }
+.s6 { left: 150px; top: 135px; }
+.s7 { left: 112px; top: 150px; }
+.s8 { left: 138px; top: 153px; }
+
+/* Tallo */
+
+.tallo {
+    position: absolute;
+    width: 13px;
+    height: 145px;
+    background: linear-gradient(90deg, #3e7931, #59943e);
+    left: 118px;
+    top: 185px;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+/* Hojas */
+
+.hoja {
+    position: absolute;
+    width: 85px;
+    height: 35px;
+    background: #4d9139;
+    border-radius: 100% 0 100% 0;
+    top: 255px;
+}
+
+.hoja.izquierda {
+    left: 50px;
+    transform: rotate(25deg);
+}
+
+.hoja.derecha {
+    right: 50px;
+    transform: scaleX(-1) rotate(25deg);
+}
+
+/* Botón */
+
+button {
+    border: none;
+    background: #f3bd24;
+    color: #5c3d08;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    padding: 13px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(100,70,10,.18);
+    transition: transform .2s, background .2s;
+}
+
+button:active {
+    transform: scale(.94);
+}
+
+button:hover {
+    background: #ffd447;
+}
+
+/* Mensaje oculto */
+
+.mensaje {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all .7s ease;
+    color: #6b4b1b;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.mensaje.visible {
+    max-height: 180px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+/* Pétalos que caen */
+
+.caido {
+    position: fixed;
+    top: -30px;
+    font-size: 22px;
+    pointer-events: none;
+    animation: caer linear forwards;
+    z-index: 20;
+}
+
+@keyframes caer {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes balanceo {
 
     0%, 100% {
-        transform: rotate(-1deg);
+        transform: rotate(-2deg);
     }
 
     50% {
-        transform: rotate(1deg);
+        transform: rotate(2deg);
     }
 }
+
+/* Celular */
+
+@media (max-width: 450px) {
+
+    .tarjeta {
+        padding-top: 20px;
+    }
+
+    .nombre {
+        font-size: 43px;
+    }
+
+    .subtitulo {
+        font-size: 15px;
+    }
+
+    .girasol {
+        transform: scale(.82);
+        margin-top: -5px;
+        margin-bottom: -25px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="mensaje">
-    🌻 Para ti 🌻
+<div class="pantalla">
+
+    <div class="tarjeta">
+
+        <h1 class="nombre">Sarita</h1>
+
+        <div class="subtitulo">
+            Una pequeña sorpresa para ti 🌻
+        </div>
+
+        <div class="girasol">
+
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+            <div class="petalo p9"></div>
+            <div class="petalo p10"></div>
+            <div class="petalo p11"></div>
+            <div class="petalo p12"></div>
+
+            <div class="centro"></div>
+
+            <div class="semilla s1"></div>
+            <div class="semilla s2"></div>
+            <div class="semilla s3"></div>
+            <div class="semilla s4"></div>
+            <div class="semilla s5"></div>
+            <div class="semilla s6"></div>
+            <div class="semilla s7"></div>
+            <div class="semilla s8"></div>
+
+            <div class="tallo"></div>
+            <div class="hoja izquierda"></div>
+            <div class="hoja derecha"></div>
+
+        </div>
+
+        <button id="boton">
+            Toca aquí 🌻
+        </button>
+
+        <div class="mensaje" id="mensaje">
+            Que estas flores puedan sacarte una sonrisa
+            y alegrarte un poquito el día. 💛
+        </div>
+
+    </div>
+
 </div>
 
-<div class="jardin">
+<script>
 
-<svg viewBox="0 0 700 650"
-     xmlns="http://www.w3.org/2000/svg">
+const boton = document.getElementById("boton");
+const mensaje = document.getElementById("mensaje");
 
-<!-- SUELO -->
+boton.addEventListener("click", () => {
 
-<path
-    d="M0 590 Q175 555 350 590 T700 590 V650 H0Z"
-    fill="#78a94f"/>
+    mensaje.classList.toggle("visible");
 
-<path
-    d="M0 615 Q180 580 350 615 T700 615 V650 H0Z"
-    fill="#699745"/>
+    if (mensaje.classList.contains("visible")) {
+        boton.textContent = "🌻 Para Sarita 🌻";
+        crearPetalos();
+    } else {
+        boton.textContent = "Toca aquí 🌻";
+    }
 
+});
 
-<!-- GIRASOL IZQUIERDO -->
+function crearPetalos() {
 
-<g class="girasol">
+    for (let i = 0; i < 18; i++) {
 
-    <!-- tallo -->
-    <path
-        d="M170 620
-           C168 500 170 390 190 275"
-        fill="none"
-        stroke="#43843a"
-        stroke-width="11"
-        stroke-linecap="round"/>
+        const petalo = document.createElement("div");
 
-    <!-- hoja -->
-    <path
-        d="M170 490
-           C115 450 82 475 100 505
-           C120 535 160 525 180 500Z"
-        fill="#4d963f"/>
+        petalo.className = "caido";
+        petalo.textContent = "🌻";
 
-    <path
-        d="M145 492 Q130 490 110 492"
-        fill="none"
-        stroke="#367a32"
-        stroke-width="3"/>
+        petalo.style.left =
+            Math.random() * 100 + "%";
 
+        petalo.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
 
-    <!-- flor -->
+        petalo.style.animationDelay =
+            Math.random() * 1.5 + "s";
 
-    <g transform="translate(190 250)">
+        document.body.appendChild(petalo);
 
-        <!-- pétalos traseros -->
-        <g fill="#f7c928">
+        setTimeout(() => {
+            petalo.remove();
+        }, 7000);
+    }
+}
 
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(30)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(60)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(90)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(120)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(150)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(180)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(210)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(240)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(270)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(300)"/>
-
-            <ellipse cx="0" cy="-72"
-                     rx="25" ry="72"
-                     transform="rotate(330)"/>
-
-        </g>
-
-        <!-- pétalos delanteros -->
-        <g fill="#ffd83d">
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"/>
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"
-                     transform="rotate(60)"/>
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"
-                     transform="rotate(120)"/>
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"
-                     transform="rotate(180)"/>
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"
-                     transform="rotate(240)"/>
-
-            <ellipse cx="0" cy="-55"
-                     rx="20" ry="58"
-                     transform="rotate(300)"/>
-
-        </g>
-
-        <!-- centro -->
-        <circle r="48" fill="#75420d"/>
-
-        <circle r="38" fill="#8d5313"/>
-
-        <!-- semillas -->
-        <g fill="#55300b">
-
-            <circle cx="-18" cy="-15" r="3"/>
-            <circle cx="0" cy="-21" r="3"/>
-            <circle cx="18" cy="-13" r="3"/>
-
-            <circle cx="-25" cy="4" r="3"/>
-            <circle cx="-8" cy="3" r="3"/>
-            <circle cx="10" cy="4" r="3"/>
-            <circle cx="26" cy="5" r="3"/>
-
-            <circle cx="-17" cy="22" r="3"/>
-            <circle cx="2" cy="21" r="3"/>
-            <circle cx="20" cy="21" r="3"/>
-
-        </g>
-
-    </g>
-
-</g>
-
-
-<!-- GIRASOL CENTRAL -->
-
-<g class="girasol">
-
-    <!-- tallo -->
-    <path
-        d="M350 630
-           C350 500 350 365 350 220"
-        fill="none"
-        stroke="#43843a"
-        stroke-width="13"
-        stroke-linecap="round"/>
-
-    <!-- hoja izquierda -->
-    <path
-        d="M350 485
-           C285 440 250 470 270 505
-           C295 535 330 520 355 495Z"
-        fill="#4d963f"/>
-
-    <!-- nervadura -->
-    <path
-        d="M350 490 Q305 480 275 490"
-        fill="none"
-        stroke="#367a32"
-        stroke-width="3"/>
-
-    <!-- hoja derecha -->
-    <path
-        d="M350 405
-           C415 360 450 390 430 425
-           C405 450 370 435 350 415Z"
-        fill="#4d963f"/>
-
-
-    <!-- flor -->
-
-    <g transform="translate(350 195)">
-
-        <!-- pétalos -->
-        <g fill="#f7c928">
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(30)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(60)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(90)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(120)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(150)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(180)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(210)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(240)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(270)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(300)"/>
-
-            <ellipse cx="0" cy="-82"
-                     rx="28" ry="82"
-                     transform="rotate(330)"/>
-
-        </g>
-
-        <!-- centro -->
-        <circle r="55" fill="#70400b"/>
-        <circle r="44" fill="#8c5312"/>
-
-        <!-- semillas -->
-        <g fill="#56310a">
-
-            <circle cx="-20" cy="-20" r="3"/>
-            <circle cx="0" cy="-27" r="3"/>
-            <circle cx="20" cy="-18" r="3"/>
-
-            <circle cx="-28" cy="0" r="3"/>
-            <circle cx="-10" cy="0" r="3"/>
-            <circle cx="10" cy="0" r="3"/>
-            <circle cx="28" cy="0" r="3"/>
-
-            <circle cx="-18" cy="21" r="3"/>
-            <circle cx="0" cy="25" r="3"/>
-            <circle cx="19" cy="20" r="3"/>
-
-        </g>
-
-    </g>
-
-</g>
-
-
-<!-- GIRASOL DERECHO -->
-
-<g class="girasol">
-
-    <!-- tallo -->
-    <path
-        d="M530 625
-           C530 500 530 395 505 285"
-        fill="none"
-        stroke="#43843a"
-        stroke-width="11"
-        stroke-linecap="round"/>
-
-    <!-- hoja -->
-    <path
-        d="M530 500
-           C585 460 615 485 600 515
-           C580 540 545 530 525 510Z"
-        fill="#4d963f"/>
-
-    <!-- flor -->
-
-    <g transform="translate(505 260)">
-
-        <g fill="#f7c928">
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(30)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(60)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(90)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(120)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(150)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(180)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(210)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(240)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(270)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(300)"/>
-
-            <ellipse cx="0" cy="-70"
-                     rx="24" ry="70"
-                     transform="rotate(330)"/>
-
-        </g>
-
-        <circle r="46" fill="#75420d"/>
-        <circle r="36" fill="#8d5313"/>
-
-        <g fill="#55300b">
-
-            <circle cx="-17" cy="-14" r="3"/>
-            <circle cx="0" cy="-20" r="3"/>
-            <circle cx="17" cy="-14" r="3"/>
-
-            <circle cx="-23" cy="3" r="3"/>
-            <circle cx="-7" cy="2" r="3"/>
-            <circle cx="9" cy="3" r="3"/>
-            <circle cx="23" cy="4" r="3"/>
-
-            <circle cx="-15" cy="19" r="3"/>
-            <circle cx="2" cy="20" r="3"/>
-            <circle cx="18" cy="18" r="3"/>
-
-        </g>
-
-    </g>
-
-</g>
-
-</svg>
-
-</div>
+</script>
 
 </body>
 </html>
