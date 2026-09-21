@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un pequeño detalle </title>
+<title>Un pequeño detalle</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,18 +77,6 @@ body{
   z-index:3;
 }
 
-.envelope-front::before{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:0;
-  height:0;
-  border-left:50% solid transparent;
-  border-right:50% solid transparent;
-  border-bottom:150px solid #eadcbd;
-}
-
 .envelope-left{
   position:absolute;
   left:0;
@@ -145,11 +133,6 @@ body{
   height:48px;
   border-radius:50%;
   background:#d6a92d;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-size:21px;
   box-shadow:0 4px 12px rgba(93,70,15,.18);
   transition:opacity .3s ease;
 }
@@ -436,9 +419,11 @@ body{
     transform:translateY(-50px) rotate(0deg);
     opacity:0;
   }
+
   10%{
     opacity:.95;
   }
+
   100%{
     transform:translateY(110vh) rotate(360deg);
     opacity:0;
@@ -506,6 +491,7 @@ body{
 <body>
 
 <!-- PANTALLA DE LA CARTA -->
+
 <section class="intro" id="intro">
 
   <div class="envelope-wrap" id="envelopeWrap">
@@ -520,7 +506,7 @@ body{
         <div class="envelope-bottom"></div>
       </div>
 
-      <div class="seal">🌻</div>
+      <div class="seal"></div>
 
       <div class="envelope-text">
         <strong>Un pequeño detalle</strong>
@@ -530,7 +516,7 @@ body{
     </div>
 
     <button class="open-btn" id="openBtn">
-      Abrir 
+      Abrir
     </button>
 
   </div>
@@ -539,6 +525,7 @@ body{
 
 
 <!-- CONTENIDO DE LA CARTA -->
+
 <main class="content" id="content">
 
   <div class="card">
@@ -564,6 +551,8 @@ body{
 
     <div class="subtitle">Un pequeño detalle</div>
 
+
+    <!-- GIRASOL ORIGINAL -->
 
     <div class="sunflower">
 
@@ -628,10 +617,12 @@ Bendiciones 🌻
 
 
 <!-- FLORES QUE CAEN -->
+
 <div class="falling" id="falling"></div>
 
 
 <!-- MÚSICA -->
+
 <audio id="musica" loop preload="auto">
   <source src="flores-amarillas.mp3" type="audio/mpeg">
 </audio>
@@ -649,9 +640,11 @@ const falling = document.getElementById("falling");
 openBtn.addEventListener("click", abrirCarta);
 
 envelopeWrap.addEventListener("click", function(e){
+
   if(e.target !== openBtn){
     abrirCarta();
   }
+
 });
 
 function abrirCarta(){
@@ -660,20 +653,21 @@ function abrirCarta(){
 
   envelopeWrap.classList.add("open");
 
-  /* Intentar iniciar la música con la interacción del usuario */
   musica.currentTime = 0;
+
   musica.play().catch(() => {
     console.log("No se pudo iniciar el audio.");
   });
 
   setTimeout(() => {
+
     intro.classList.add("hide");
     content.classList.add("show");
 
     crearFlores();
     crearDestellos();
 
-  }, 950);
+  },950);
 }
 
 
@@ -708,7 +702,7 @@ function crearFlores(){
 
     setTimeout(() => {
       flower.remove();
-    }, 10000);
+    },10000);
   }
 }
 
@@ -746,7 +740,7 @@ function crearDestellos(){
 
     setTimeout(() => {
       sparkle.remove();
-    }, 10000);
+    },10000);
   }
 }
 
