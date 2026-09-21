@@ -1,597 +1,504 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Flores amarillas 🌻</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Un pequeño detalle 🌻</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-
-<style>
-
-* {
-    box-sizing: border-box;
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><style>
+*{
+  box-sizing:border-box;
 }
 
-html, body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
+html,body{
+  margin:0;
+  min-height:100%;
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    font-family: "DM Sans", sans-serif;
-
-    background:
-        radial-gradient(circle at 50% 20%, #fff8cf 0%, transparent 30%),
-        linear-gradient(
-            135deg,
-            #fffdf3 0%,
-            #fff7d7 100%
-        );
-
-    color: #5f5139;
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,218,79,.18),transparent 28%),
+    radial-gradient(circle at 80% 90%,rgba(255,205,50,.14),transparent 30%),
+    linear-gradient(145deg,#fffdf5,#fff8d9 55%,#fffdf6);
+  color:#332b20;
+  font-family:"DM Sans",sans-serif;
 }
 
-/* PANTALLA */
+/* DECORACIÓN DEL FONDO */
+.background-flower{
+  position:fixed;
+  pointer-events:none;
+  opacity:.14;
+  font-size:28px;
+  animation:floatFlower 7s ease-in-out infinite;
+}
 
-.pantalla {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+.bf1{left:5%;top:13%;animation-delay:0s}
+.bf2{right:7%;top:20%;font-size:22px;animation-delay:1.2s}
+.bf3{left:9%;bottom:18%;font-size:20px;animation-delay:2s}
+.bf4{right:9%;bottom:12%;font-size:30px;animation-delay:3s}
+.bf5{left:50%;top:5%;font-size:18px;animation-delay:1.5s}
+
+@keyframes floatFlower{
+  0%,100%{
+    transform:translateY(0) rotate(-5deg);
+  }
+  50%{
+    transform:translateY(-14px) rotate(8deg);
+  }
 }
 
 /* TARJETA */
-
-.card {
-    width: min(92%, 450px);
-    padding: 40px 27px;
-
-    text-align: center;
-
-    background: rgba(255,255,255,.72);
-    backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255,255,255,.9);
-    border-radius: 32px;
-
-    box-shadow:
-        0 20px 60px rgba(160,120,20,.13);
-
-    transition: .7s ease;
+.card{
+  position:relative;
+  z-index:2;
+  width:min(430px,100%);
+  padding:34px 24px 30px;
+  text-align:center;
+  background:rgba(255,255,255,.80);
+  border:1px solid rgba(210,176,75,.2);
+  border-radius:28px;
+  box-shadow:0 18px 50px rgba(112,88,28,.12);
+  backdrop-filter:blur(8px);
 }
 
 /* INICIO */
-
-.inicio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.intro h1{
+  margin:0 0 10px;
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  font-weight:600;
+  color:#3c3328;
 }
 
-.titulo {
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(30px, 8vw, 42px);
-
-    font-weight: 500;
-
-    color: #79551d;
-
-    margin: 0 0 12px;
+.intro p{
+  margin:0 auto 25px;
+  color:#776c5a;
+  font-size:15px;
 }
 
-.intro {
-    font-size: 16px;
-    line-height: 1.7;
-
-    color: #81745d;
-
-    margin: 0 0 28px;
+button{
+  border:0;
+  border-radius:999px;
+  padding:13px 27px;
+  font:600 15px "DM Sans",sans-serif;
+  color:#493a14;
+  background:#f6cf43;
+  box-shadow:0 8px 20px rgba(196,154,25,.20);
+  cursor:pointer;
+  transition:.25s ease;
 }
 
-/* BOTÓN */
-
-button {
-    border: none;
-
-    padding: 15px 28px;
-
-    border-radius: 50px;
-
-    background: linear-gradient(
-        135deg,
-        #ffd94a,
-        #f2b900
-    );
-
-    color: #65470b;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 22px rgba(215,157,0,.23);
-
-    transition:
-        transform .25s,
-        box-shadow .25s;
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 11px 25px rgba(196,154,25,.27);
 }
 
-button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 28px rgba(215,157,0,.30);
+button:active{
+  transform:scale(.96);
 }
 
-button:active {
-    transform: scale(.94);
+/* CONTENIDO REVELADO */
+.reveal{
+  display:none;
 }
 
-/* CONTENIDO OCULTO */
-
-.sorpresa {
-    display: none;
-    opacity: 0;
+.reveal.show{
+  display:block;
+  animation:appear .8s ease;
 }
 
-.sorpresa.mostrar {
-    display: block;
-
-    animation: aparecer 1.2s ease forwards;
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* NOMBRE */
+.name{
+  margin:0 0 8px;
+  font-family:"Playfair Display",serif;
+  font-size:31px;
+  font-weight:600;
+  color:#4c3b1d;
+  animation:nameAppear 1s ease .15s both;
 }
 
-/* GIRASOL */
-
-.flor {
-    width: 210px;
-    height: 245px;
-
-    margin: 0 auto 25px;
-
-    position: relative;
-
-    animation: balanceo 5s ease-in-out infinite;
+.name-line{
+  width:42px;
+  height:2px;
+  margin:0 auto 10px;
+  background:#e2bd3d;
+  border-radius:10px;
+  animation:nameLine 1s ease .35s both;
 }
 
-.petalo {
-    position: absolute;
-
-    width: 43px;
-    height: 92px;
-
-    left: 83px;
-    top: 8px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        180deg,
-        #ffe968,
-        #f4b900
-    );
-
-    transform-origin: 21px 101px;
-
-    box-shadow:
-        0 3px 8px rgba(190,130,0,.12);
+@keyframes nameAppear{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.p1  { transform: rotate(0deg); }
-.p2  { transform: rotate(30deg); }
-.p3  { transform: rotate(60deg); }
-.p4  { transform: rotate(90deg); }
-.p5  { transform: rotate(120deg); }
-.p6  { transform: rotate(150deg); }
-.p7  { transform: rotate(180deg); }
-.p8  { transform: rotate(210deg); }
-.p9  { transform: rotate(240deg); }
-.p10 { transform: rotate(270deg); }
-.p11 { transform: rotate(300deg); }
-.p12 { transform: rotate(330deg); }
-
-.centro {
-    position: absolute;
-
-    width: 82px;
-    height: 82px;
-
-    left: 64px;
-    top: 64px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #a36b1c,
-            #633709
-        );
-
-    box-shadow:
-        inset 0 0 0 5px rgba(50,25,0,.14);
-
-    z-index: 2;
+@keyframes nameLine{
+  from{
+    width:0;
+    opacity:0;
+  }
+  to{
+    width:42px;
+    opacity:1;
+  }
 }
 
-/* SEMILLAS */
-
-.semilla {
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: #4d2b07;
-
-    z-index: 3;
+/* GIRASOL PRINCIPAL */
+.sunflower{
+  position:relative;
+  width:210px;
+  height:270px;
+  margin:0 auto 0;
 }
 
-.s1 { left: 92px; top: 91px; }
-.s2 { left: 112px; top: 85px; }
-.s3 { left: 134px; top: 94px; }
-.s4 { left: 87px; top: 111px; }
-.s5 { left: 109px; top: 108px; }
-.s6 { left: 133px; top: 112px; }
-.s7 { left: 96px; top: 130px; }
-.s8 { left: 119px; top: 133px; }
-.s9 { left: 139px; top: 128px; }
-
-/* TALLO */
-
-.tallo {
-    position: absolute;
-
-    width: 11px;
-    height: 105px;
-
-    left: 99px;
-    top: 138px;
-
-    background: linear-gradient(
-        90deg,
-        #3e7c32,
-        #5b9843
-    );
-
-    border-radius: 10px;
-
-    z-index: -1;
+.flower{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:150px;
+  height:150px;
+  transform:translateX(-50%);
 }
 
-/* HOJAS */
-
-.hoja {
-    position: absolute;
-
-    width: 70px;
-    height: 30px;
-
-    background: #57983f;
-
-    border-radius: 100% 0 100% 0;
-
-    top: 185px;
+.petal{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:34px;
+  height:72px;
+  border-radius:50% 50% 45% 45%;
+  background:linear-gradient(#ffd95a,#f4bb20);
+  transform-origin:50% 100%;
+  transform:
+    translate(-50%,-100%)
+    rotate(var(--r))
+    translateY(-8px);
 }
 
-.hoja.izquierda {
-    left: 30px;
-    transform: rotate(25deg);
+.petal:nth-child(1){--r:0deg}
+.petal:nth-child(2){--r:30deg}
+.petal:nth-child(3){--r:60deg}
+.petal:nth-child(4){--r:90deg}
+.petal:nth-child(5){--r:120deg}
+.petal:nth-child(6){--r:150deg}
+.petal:nth-child(7){--r:180deg}
+.petal:nth-child(8){--r:210deg}
+.petal:nth-child(9){--r:240deg}
+.petal:nth-child(10){--r:270deg}
+.petal:nth-child(11){--r:300deg}
+.petal:nth-child(12){--r:330deg}
+
+.center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:66px;
+  height:66px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%,#8a5b16 0 4%,transparent 5%),
+    radial-gradient(circle at 65% 25%,#5e3b0c 0 4%,transparent 5%),
+    radial-gradient(circle at 30% 65%,#6c430e 0 4%,transparent 5%),
+    radial-gradient(circle at 70% 65%,#513208 0 4%,transparent 5%),
+    radial-gradient(circle,#6f470f,#4d300b);
+  box-shadow:inset 0 0 0 5px rgba(255,213,71,.18);
 }
 
-.hoja.derecha {
-    right: 30px;
-    transform: scaleX(-1) rotate(25deg);
+.stem{
+  position:absolute;
+  top:126px;
+  left:101px;
+  width:9px;
+  height:125px;
+  border-radius:8px;
+  background:#5d8c39;
 }
 
-/* TEXTO */
-
-.texto {
-    text-align: left;
-
-    font-size: 16px;
-
-    line-height: 1.75;
-
-    color: #655b4b;
-
-    white-space: normal;
+.leaf{
+  position:absolute;
+  width:67px;
+  height:30px;
+  background:#719d45;
+  border-radius:100% 0 100% 0;
 }
 
-.texto p {
-    margin: 0 0 18px;
+.leaf.left{
+  top:188px;
+  left:48px;
+  transform:rotate(24deg);
 }
 
-.final {
-    text-align: center;
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 20px;
-
-    color: #76521a;
-
-    margin-top: 25px;
+.leaf.right{
+  top:208px;
+  right:43px;
+  transform:scaleX(-1) rotate(22deg);
 }
 
-/* PÉTALOS FLOTANTES */
-
-.caido {
-    position: fixed;
-
-    top: -30px;
-
-    pointer-events: none;
-
-    z-index: 20;
-
-    animation: caer linear forwards;
+/* MENSAJE */
+.message{
+  margin-top:-2px;
+  padding:20px 10px 0;
+  border-top:1px solid rgba(155,126,49,.16);
+  animation:messageAppear 1s ease .35s both;
 }
 
-@keyframes caer {
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
+@keyframes messageAppear{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-/* BALANCEO */
-
-@keyframes balanceo {
-
-    0%, 100% {
-        transform:
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            rotate(2deg);
-    }
+.message p{
+  margin:0 0 16px;
+  font-size:14.5px;
+  line-height:1.72;
+  color:#5e5548;
 }
 
-/* CELULAR */
-
-@media (max-width: 450px) {
-
-    .pantalla {
-        padding: 18px 12px;
-        align-items: flex-start;
-        padding-top: 25px;
-    }
-
-    .card {
-        padding: 32px 21px;
-        margin-bottom: 20px;
-    }
-
-    .titulo {
-        font-size: 31px;
-    }
-
-    .intro {
-        font-size: 15px;
-    }
-
-    .texto {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .flor {
-        transform: scale(.88);
-        margin-top: -5px;
-        margin-bottom: 5px;
-    }
+.message .final{
+  margin-top:20px;
+  font-family:"Playfair Display",serif;
+  font-size:21px;
+  color:#4b3b20;
 }
 
-</style>
-</head>
+/* FLORES QUE APARECEN AL ABRIR */
+.fall{
+  position:fixed;
+  top:-35px;
+  z-index:10;
+  pointer-events:none;
+  animation:fall linear forwards;
+  opacity:0;
+  filter:drop-shadow(0 3px 5px rgba(180,135,20,.12));
+}
 
-<body>
+@keyframes fall{
+  0%{
+    transform:translateY(-40px) rotate(0deg);
+    opacity:0;
+  }
+  10%{
+    opacity:.8;
+  }
+  90%{
+    opacity:.65;
+  }
+  100%{
+    transform:translateY(110vh) rotate(420deg);
+    opacity:0;
+  }
+}
 
-<div class="pantalla">
+/* PEQUEÑOS DESTELLOS */
+.spark{
+  position:fixed;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#f4cd4a;
+  pointer-events:none;
+  z-index:9;
+  animation:sparkle 1.8s ease-out forwards;
+}
 
-    <div class="card">
+@keyframes sparkle{
+  0%{
+    transform:scale(0);
+    opacity:0;
+  }
+  30%{
+    transform:scale(1);
+    opacity:.7;
+  }
+  100%{
+    transform:scale(0);
+    opacity:0;
+  }
+}
+</style></head><body><!-- Decoración inicial --><div class="background-flower bf1">🌻</div>
+<div class="background-flower bf2">🌼</div>
+<div class="background-flower bf3">🌻</div>
+<div class="background-flower bf4">🌼</div>
+<div class="background-flower bf5">✦</div><main class="card">  <section class="intro" id="intro">
+    <h1>Un pequeño detalle 🌻</h1>
+    <p>Hay algo que quiero entregarte.</p>
+    <button id="openBtn">Abrir 🌻</button>
+  </section>  <section class="reveal" id="reveal"><h2 class="name">Sarita</h2>
+<div class="name-line"></div>
 
-        <!-- PANTALLA INICIAL -->
+<!-- GIRASOL PRINCIPAL -->
+<div class="sunflower" aria-label="Girasol">
 
-        <div class="inicio" id="inicio">
+  <div class="flower">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
 
-            <h1 class="titulo">
-                Un pequeño detalle 🌻
-            </h1>
+    <div class="center"></div>
+  </div>
 
-            <p class="intro">
-                Hay algo que quiero entregarte.
-            </p>
-
-            <button id="boton">
-                Abrir 🌻
-            </button>
-
-        </div>
-
-
-        <!-- SORPRESA -->
-
-        <div class="sorpresa" id="sorpresa">
-
-            <!-- GIRASOL -->
-
-            <div class="flor">
-
-                <div class="petalo p1"></div>
-                <div class="petalo p2"></div>
-                <div class="petalo p3"></div>
-                <div class="petalo p4"></div>
-                <div class="petalo p5"></div>
-                <div class="petalo p6"></div>
-                <div class="petalo p7"></div>
-                <div class="petalo p8"></div>
-                <div class="petalo p9"></div>
-                <div class="petalo p10"></div>
-                <div class="petalo p11"></div>
-                <div class="petalo p12"></div>
-
-                <div class="centro"></div>
-
-                <div class="semilla s1"></div>
-                <div class="semilla s2"></div>
-                <div class="semilla s3"></div>
-                <div class="semilla s4"></div>
-                <div class="semilla s5"></div>
-                <div class="semilla s6"></div>
-                <div class="semilla s7"></div>
-                <div class="semilla s8"></div>
-                <div class="semilla s9"></div>
-
-                <div class="tallo"></div>
-
-                <div class="hoja izquierda"></div>
-                <div class="hoja derecha"></div>
-
-            </div>
-
-
-            <!-- MENSAJE -->
-
-            <div class="texto">
-
-                <p>
-                    Que estas flores puedan<br>
-                    sacarte una sonrisa<br>
-                    y alegrarte un poquito el día.
-                </p>
-
-                <p>
-                    A la distancia te envío estas
-                    flores amarillas.
-                </p>
-
-                <p>
-                    Sé que quizás esta vez, por el tiempo
-                    y el día, no pude enviarlas como la
-                    última vez.
-                </p>
-
-                <p>
-                    Sin embargo, espero que este detalle
-                    sea de bendición para ti.
-                </p>
-
-                <p>
-                    Lo hice porque considero que te lo
-                    mereces, por lo que eres, por lo que haces.
-                </p>
-
-                <p>
-                    Eres de bendición.
-                </p>
-
-                <p>
-                    Una de las pocas amistades en las cuales
-                    me puedo expresar, ayudar, y donde no
-                    tengo que forzar para que funcione
-                    como amistad.
-                </p>
-
-                <p>
-                    Gracias.
-                </p>
-
-                <div class="final">
-                    Bendiciones 🌻
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+  <div class="stem"></div>
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
 
 </div>
 
+<div class="message">
 
-<script>
+  <p>
+    Que estas flores puedan<br>
+    sacarte una sonrisa<br>
+    y alegrarte un poquito el día.
+  </p>
 
-const boton = document.getElementById("boton");
-const inicio = document.getElementById("inicio");
-const sorpresa = document.getElementById("sorpresa");
+  <p>
+    A la distancia te envío estas<br>
+    flores amarillas.
+  </p>
 
-boton.addEventListener("click", () => {
+  <p>
+    Sé que quizás esta vez, por el tiempo y el día,<br>
+    no pude enviarlas como la última vez.
+  </p>
 
-    inicio.style.display = "none";
+  <p>
+    Sin embargo, espero que este detalle<br>
+    sea de bendición para ti.
+  </p>
 
-    sorpresa.classList.add("mostrar");
+  <p>
+    Lo hice porque considero que te lo mereces,<br>
+    por lo que eres, por lo que haces.<br>
+    Eres de bendición.
+  </p>
 
-    crearFlores();
+  <p>
+    Una de las pocas amistades en las cuales<br>
+    me puedo expresar, ayudar,<br>
+    y donde no tengo que forzar<br>
+    para que funcione como amistad.
+  </p>
+
+  <p>
+    Gracias.
+  </p>
+
+  <p class="final">
+    Bendiciones 🌻
+  </p>
+
+</div>
+
+  </section>
+</main><script>
+
+const btn = document.getElementById("openBtn");
+const intro = document.getElementById("intro");
+const reveal = document.getElementById("reveal");
+
+btn.addEventListener("click", () => {
+
+  intro.style.display = "none";
+  reveal.classList.add("show");
+
+  /* MUCHAS FLORES */
+  const flowers = [
+    "🌻","🌻","🌻","🌼","🌻",
+    "🌼","🌻","🌻","🌼","🌻",
+    "🌻","🌼","🌻","🌻","🌼",
+    "🌻","🌼","🌻","🌻","🌼",
+    "🌻","🌻","🌼","🌻","🌼",
+    "🌻","🌻","🌼","🌻","🌻"
+  ];
+
+  flowers.forEach((flower, i) => {
+
+    const f = document.createElement("span");
+
+    f.className = "fall";
+    f.textContent = flower;
+
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.fontSize = (15 + Math.random() * 17) + "px";
+
+    f.style.animationDuration =
+      (4 + Math.random() * 4) + "s";
+
+    f.style.animationDelay =
+      (Math.random() * 2.5) + "s";
+
+    document.body.appendChild(f);
+
+    setTimeout(() => {
+      f.remove();
+    }, 8500);
+
+  });
+
+  /* DESTELLOS ALREDEDOR */
+  for(let i = 0; i < 24; i++){
+
+    setTimeout(() => {
+
+      const s = document.createElement("span");
+
+      s.className = "spark";
+
+      s.style.left =
+        (8 + Math.random() * 84) + "vw";
+
+      s.style.top =
+        (8 + Math.random() * 84) + "vh";
+
+      document.body.appendChild(s);
+
+      setTimeout(() => {
+        s.remove();
+      }, 1900);
+
+    }, i * 90);
+
+  }
 
 });
 
-
-function crearFlores() {
-
-    for (let i = 0; i < 16; i++) {
-
-        const flor = document.createElement("div");
-
-        flor.className = "caido";
-        flor.textContent = "🌻";
-
-        flor.style.left =
-            Math.random() * 100 + "%";
-
-        flor.style.fontSize =
-            (16 + Math.random() * 10) + "px";
-
-        flor.style.animationDuration =
-            (3.5 + Math.random() * 3) + "s";
-
-        flor.style.animationDelay =
-            Math.random() * 1.5 + "s";
-
-        document.body.appendChild(flor);
-
-        setTimeout(() => {
-            flor.remove();
-        }, 7500);
-    }
-}
-
-</script>
-
-</body>
+</script></body>
 </html>
